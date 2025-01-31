@@ -1,0 +1,62 @@
+
+
+<section class="container mt-5">
+
+
+    
+    {{ form_start(recipeForm, {
+        'attr':{
+            'id': 'recipeForm',
+            'class' : 'form'
+        }
+    }) }}
+
+    <div class="mb-3">
+        {{ form_label(recipeForm.name, 'Nom de la recette :', {'label_attr': {'class': 'form-label'}}) }}
+        <div class="input-group">
+            {{ form_widget(recipeForm.name, {'attr': {'class': 'form-control form-control-sm'}}) }}
+        </div>
+        {{ form_errors(recipeForm.name) }}
+    </div>
+
+     <div class="mb-3">
+        {{ form_label(recipeForm.category) }}
+        <div class="input-group">
+            {{ form_widget(recipeForm.category) }}
+        </div>
+        {{ form_errors(recipeForm.category) }}
+    </div>
+
+     
+
+    <div class="mb-3">
+        {{ form_label(recipeForm.slug, 'Slug de la recette :', {'label_attr': {'class': 'form-label'}}) }}
+        <div class="input-group">
+            {{ form_widget(recipeForm.slug, {'attr': {'class': 'form-control form-control-sm'}}) }}
+        </div>
+        {{ form_errors(recipeForm.slug) }}
+    </div>
+
+    <div class="mb-3">
+        {{ form_label(recipeForm.description, 'Description de la recette :', {'label_attr': {'class': 'form-label'}}) }}
+        <div class="input-group">
+            {{ form_widget(recipeForm.description, {'attr': {'class': 'form-control form-control-sm'}}) }}
+        </div>
+        {{ form_errors(recipeForm.description) }}
+    </div>
+
+    <div class="mb-3">
+        {{ form_label(recipeForm.duration, 'Durée de cuisson (minutes) :', {'label_attr': {'class': 'form-label'}}) }}
+        <div class="input-group">
+            {{ form_widget(recipeForm.duration, {'attr': {'class': 'form-control form-control-sm'}}) }}
+        </div>
+        {{ form_errors(recipeForm.duration) }}
+    </div>
+
+
+    <button class="btn btn-primary btn-sm">{{ button_label|default('Crée') }}</button>
+
+    
+    {{ form_end(recipeForm) }}
+
+</section>

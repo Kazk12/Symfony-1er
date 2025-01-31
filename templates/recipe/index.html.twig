@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recettes disponibles{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Toutes les recettes</h1>
+
+        <div class="row">
+            {% for recipe in recipes %}
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm">
+                       
+                        
+                        <div class="card-body">
+                            <h5 class="card-title">{{ recipe.name }}</h5>
+                            <p>Category : {{recipe.category }}</p>
+                            <p class="card-text">{{ recipe.description | slice(0, 100) ~ '...' }}</p>
+                            <p class="text-muted">Durée: {{ recipe.duration }} minutes</p>
+                            <p class="text-muted">Créée le : {{ recipe.createdAt ? recipe.createdAt|date('Y-m-d') : '' }}</p>
+                            
+                            <div class="d-flex justify-content-between">
+                                <a href="{{ path('app_recipe_show', {'id': recipe.id}) }}" class="btn btn-info btn-sm">Voir</a>
+                                <a href="{{ path('app_recipe_edit', {'id': recipe.id}) }}" class="btn btn-warning btn-sm">Modifier</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="col-12">
+                    <div class="alert alert-warning text-center" role="alert">
+                        Aucune recette trouvée.
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="{{ path('app_recipe_new') }}" class="btn btn-primary btn-lg">Ajouter une nouvelle recette</a>
+        </div>
+    </div>
+{% endblock %}
